@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Pubg.Net;
+using PubgStats.AppCore.Data;
 
 namespace PubgStats.AppCore
 {
@@ -27,6 +29,8 @@ namespace PubgStats.AppCore
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["DbConnectionString"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
