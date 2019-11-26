@@ -11,6 +11,7 @@ namespace PubgStats.AppCore.Configuration
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
             return services;
         }
     }
